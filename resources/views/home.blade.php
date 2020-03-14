@@ -16,6 +16,14 @@
 
                     You are logged in!
                 </div>
+
+                <div class="text-center">
+                    <img class="rounded-circle border border-dark"
+                        src="{{ asset( '/img/'.Auth::user()->avatar ) }}"
+                        alt="{{ Auth::user()->name }}"
+                        width=200
+                        style="margin:32px">
+                </div>
             </div>
         </div>
     </div>

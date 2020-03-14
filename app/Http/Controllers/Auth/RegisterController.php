@@ -64,9 +64,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Check image.
+        request()->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // // Default image value.
+        $fileName = '';
+        // Handle file upload.
+        if ( $file = request()->file( 'avatar' ) ) {
+            $dest = 'img/';
+            $fileName = date('YmdHis') .
+                    '_' .
+                    str_replace( ' ', '_', $file->getClientOriginalName() ) .
+                    '.' .
+                    $file->getClientOriginalExtension();
+            $file->move( $dest, $fileName );
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar' => $fileName,
             'password' => Hash::make($data['password']),
         ]);
     }

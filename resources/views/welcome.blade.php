@@ -61,6 +61,21 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .links .button {
+                font-size: 1rem;
+                display: inline-block;
+                padding: 0.75rem 1.25rem;
+                border: 1px solid #636b6f;
+                transition: 0.1s linear all;
+            }
+
+            .links .button:hover,
+            .links .button:focus,
+            .links .button:active {
+                color: #fff;
+                background: #636b6f;
+            }
         </style>
     </head>
     <body>
@@ -94,7 +109,22 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <div class="links">
+                    <p>
+                        Please
+                        <a href="{{ route('register') }}">
+                            register
+                        </a>
+                        and upload an avatar photograph.
+                    </p>
+                    <a href="{{ route('register') }}" class="button">
+                        Register
+                    </a>
+                </div>
             </div>
+
+                
         </div>
     </body>
 </html>
